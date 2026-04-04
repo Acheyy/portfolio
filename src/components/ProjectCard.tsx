@@ -11,7 +11,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <motion.div
-      className="shrink-0 w-[calc(100vw-3rem)] sm:w-[400px]"
+      className="snap-card shrink-0 w-[calc(100vw-3rem)] sm:w-[400px]"
       initial={{ opacity: 0, x: 60 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: false, margin: '-40px' }}

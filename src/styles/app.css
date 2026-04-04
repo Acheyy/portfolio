@@ -149,23 +149,41 @@ body {
   scrollbar-color: var(--color-border) transparent;
 }
 
-.horizontal-scroll::-webkit-scrollbar {
-  height: 4px;
+@media (max-width: 639px) {
+  .horizontal-scroll {
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 1.5rem;
+    scrollbar-width: none;
+  }
+
+  .horizontal-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .horizontal-scroll .snap-card {
+    scroll-snap-align: start;
+  }
 }
 
-.horizontal-scroll::-webkit-scrollbar-track {
-  background: var(--color-border);
-  border-radius: 2px;
-  opacity: 0.3;
-}
+@media (min-width: 640px) {
+  .horizontal-scroll::-webkit-scrollbar {
+    height: 4px;
+  }
 
-.horizontal-scroll::-webkit-scrollbar-thumb {
-  background: var(--color-accent-dark);
-  border-radius: 2px;
-}
+  .horizontal-scroll::-webkit-scrollbar-track {
+    background: var(--color-border);
+    border-radius: 2px;
+    opacity: 0.3;
+  }
 
-.horizontal-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+  .horizontal-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-accent-dark);
+    border-radius: 2px;
+  }
+
+  .horizontal-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+  }
 }
 
 .game-canvas-glow {

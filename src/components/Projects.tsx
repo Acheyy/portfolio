@@ -1,8 +1,29 @@
+import { useRef, useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { projects } from '~/data/projects'
 import { ProjectCard } from './ProjectCard'
 
+const totalCards = projects.length + 1
+
 export function Projects() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const cardWidth = el.scrollWidth / totalCards
+    const idx = Math.round(el.scrollLeft / cardWidth)
+    setActiveIndex(Math.min(idx, totalCards - 1))
+  }, [])
+
+  const scrollTo = useCallback((idx: number) => {
+    const el = scrollRef.current
+    if (!el) return
+    const cardWidth = el.scrollWidth / totalCards
+    el.scrollTo({ left: cardWidth * idx, behavior: 'smooth' })
+  }, [])
+
   return (
     <section id="projects" className="snap-section relative flex flex-col justify-center overflow-hidden">
       <div className="mx-auto max-w-6xl w-full px-6 pb-3 sm:pb-6">
@@ -29,13 +50,17 @@ export function Projects() {
         <div className="absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-bg to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-bg to-transparent z-10 pointer-events-none" />
 
-        <div className="overflow-x-auto px-6 horizontal-scroll">
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="overflow-x-auto px-6 horizontal-scroll"
+        >
           <div className="flex gap-6 py-4">
             {projects.map((project, i) => (
               <ProjectCard key={project.title} project={project} index={i} />
             ))}
             <motion.div
-              className="shrink-0 w-[calc(100vw-3rem)] sm:w-[400px]"
+              className="snap-card shrink-0 w-[calc(100vw-3rem)] sm:w-[400px]"
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, margin: '-40px' }}
@@ -57,6 +82,22 @@ export function Projects() {
             </motion.div>
           </div>
         </div>
+      </div>
+
+      {/* Dot indicators — mobile only */}
+      <div className="flex sm:hidden justify-center gap-2 pt-3">
+        {Array.from({ length: totalCards }, (_, i) => (
+          <button
+            key={i}
+            onClick={() => scrollTo(i)}
+            aria-label={`Go to card ${i + 1}`}
+            className={`rounded-full transition-all duration-300 ${
+              activeIndex === i
+                ? 'w-6 h-2 bg-accent'
+                : 'w-2 h-2 bg-border hover:bg-text-muted'
+            }`}
+          />
+        ))}
       </div>
     </section>
   )
