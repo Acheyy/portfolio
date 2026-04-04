@@ -5,7 +5,7 @@ import { ProjectCard } from './ProjectCard'
 export function Projects() {
   return (
     <section id="projects" className="snap-section relative flex flex-col justify-center overflow-hidden">
-      <div className="mx-auto max-w-6xl w-full px-6 pb-6">
+      <div className="mx-auto max-w-6xl w-full px-6 pb-3 sm:pb-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ export function Projects() {
                 ease: [0.22, 1, 0.36, 1],
               }}
             >
-              <div className="glow-card flex flex-col items-center justify-center p-6 h-full min-h-[420px] select-none">
+              <div className="glow-card flex flex-col items-center justify-center p-4 sm:p-6 h-full min-h-0 sm:min-h-[420px] select-none">
                 <span className="text-4xl mb-4">🚧</span>
                 <h3 className="font-display text-xl font-semibold text-text-heading">
                   More coming soon

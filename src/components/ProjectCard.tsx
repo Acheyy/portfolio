@@ -24,9 +24,9 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       <Link
         to="/projects/$slug"
         params={{ slug: project.slug }}
-        className="glow-card flex flex-col p-6 group cursor-pointer"
+        className="glow-card flex flex-col p-4 sm:p-6 group cursor-pointer"
       >
-        <div className="relative mb-5 aspect-video overflow-hidden rounded-lg bg-border/30">
+        <div className="relative mb-3 sm:mb-5 aspect-video overflow-hidden rounded-lg bg-border/30">
           {project.image ? (
             <img
               src={project.image}
@@ -48,15 +48,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-bg-card/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         </div>
 
-        <h3 className="font-display text-xl font-semibold text-text-heading group-hover:text-accent-light transition-colors truncate">
+        <h3 className="font-display text-lg sm:text-xl font-semibold text-text-heading group-hover:text-accent-light transition-colors truncate">
           {project.title}
         </h3>
 
-        <p className="mt-2 text-sm leading-relaxed text-text-muted line-clamp-3 min-h-[3.75rem]">
+        <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm leading-relaxed text-text-muted line-clamp-2 sm:line-clamp-3 min-h-0 sm:min-h-[3.75rem]">
           {project.description}
         </p>
 
-        <div className="mt-4 flex flex-wrap gap-2 min-h-[3.5rem]">
+        <div className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 min-h-0 sm:min-h-[3.5rem]">
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -67,7 +67,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           ))}
         </div>
 
-        <div className="mt-auto pt-4 flex items-center justify-between">
+        <div className="mt-auto pt-3 sm:pt-4 flex items-center justify-between">
           <span className="inline-flex items-center gap-1.5 text-xs font-medium text-accent-light">
             View Details
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
