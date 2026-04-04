@@ -1,3 +1,4 @@
+import path from 'node:path'
 import { defineConfig } from 'vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import { nitro } from 'nitro/vite'
@@ -9,7 +10,9 @@ export default defineConfig({
     port: 3000,
   },
   resolve: {
-    tsconfigPaths: true,
+    alias: {
+      '~': path.resolve(import.meta.dirname, './src'),
+    },
   },
   plugins: [
     tailwindcss(),
