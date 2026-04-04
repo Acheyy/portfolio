@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
-import type { Project } from '~/data/projects'
+import toast from 'react-hot-toast'
+import { porfoMessages, type Project } from '~/data/projects'
 
 interface ProjectCardProps {
   project: Project
@@ -82,7 +83,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             onMouseDown={(e) => {
               e.stopPropagation()
               e.preventDefault()
-              window.open(project.url, '_blank', 'noopener,noreferrer')
+              if (project.slug === 'porfo') {
+                toast(porfoMessages[Math.floor(Math.random() * porfoMessages.length)], {
+                  icon: null,
+                  duration: 3000,
+                })
+              } else {
+                window.open(project.url, '_blank', 'noopener,noreferrer')
+              }
             }}
             className="relative z-10 inline-flex items-center gap-1.5 rounded-full bg-accent/15 border border-accent/30 px-4 py-1.5 text-xs font-semibold text-accent-light hover:bg-accent/25 hover:border-accent/50 transition-all"
           >

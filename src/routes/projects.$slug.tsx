@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
-import { projects } from '~/data/projects'
+import { projects, porfoMessages } from '~/data/projects'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
 import { Lightbox } from '~/components/Lightbox'
@@ -104,16 +104,7 @@ function ProjectDetail() {
                 project.slug === 'porfo'
                   ? (e) => {
                       e.preventDefault()
-                      const messages = [
-                        "🤦 You're already here, genius.",
-                        "🔄 Congratulations, you just navigated to... here.",
-                        "🪞 It's like looking in a mirror, but for websites.",
-                        "📍 You are here. You were always here.",
-                        "🧠 Big brain move. Really.",
-                        "♾️ Recursion detected. Stack overflow imminent.",
-                        "🫠 The site is coming from inside the site.",
-                      ]
-                      toast(messages[Math.floor(Math.random() * messages.length)], {
+                      toast(porfoMessages[Math.floor(Math.random() * porfoMessages.length)], {
                         icon: null,
                         duration: 3000,
                       })

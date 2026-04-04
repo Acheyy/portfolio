@@ -1,3 +1,13 @@
+export const porfoMessages = [
+  "🤦 You're already here, genius.",
+  "🔄 Congratulations, you just navigated to... here.",
+  "🪞 It's like looking in a mirror, but for websites.",
+  "📍 You are here. You were always here.",
+  "🧠 Big brain move. Really.",
+  "♾️ Recursion detected. Stack overflow imminent.",
+  "🫠 The site is coming from inside the site.",
+]
+
 export interface Project {
   slug: string
   title: string
