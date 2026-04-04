@@ -34,6 +34,27 @@ export function Projects() {
             {projects.map((project, i) => (
               <ProjectCard key={project.title} project={project} index={i} />
             ))}
+            <motion.div
+              className="shrink-0 w-[calc(100vw-3rem)] sm:w-[400px]"
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, margin: '-40px' }}
+              transition={{
+                duration: 0.6,
+                delay: projects.length * 0.1,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <div className="glow-card flex flex-col items-center justify-center p-6 h-full min-h-[420px] select-none">
+                <span className="text-4xl mb-4">🚧</span>
+                <h3 className="font-display text-xl font-semibold text-text-heading">
+                  More coming soon
+                </h3>
+                <p className="mt-2 text-sm text-text-muted text-center max-w-[250px]">
+                  New projects are in the works. Stay tuned!
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>

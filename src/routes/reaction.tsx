@@ -3,16 +3,16 @@ import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
+import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/reaction')({
   head: () => ({
-    meta: [
-      { title: 'Reaction Time — Portfolio' },
-      {
-        name: 'description',
-        content: 'Test your reflexes. Click the moment the screen changes color.',
-      },
-    ],
+    meta: createSeoMeta({
+      title: 'Reaction Time — Porfo',
+      description: 'Test your reflexes. Click the moment the screen changes color.',
+      path: '/reaction',
+    }),
+    links: [createCanonicalLink('/reaction')],
   }),
   component: ReactionPage,
 })

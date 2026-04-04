@@ -2,16 +2,16 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
+import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/contact')({
   head: () => ({
-    meta: [
-      { title: 'Contact — Portfolio' },
-      {
-        name: 'description',
-        content: 'Get in touch — let\'s build something great together.',
-      },
-    ],
+    meta: createSeoMeta({
+      title: 'Contact — Porfo',
+      description: 'Get in touch — let\'s build something great together.',
+      path: '/contact',
+    }),
+    links: [createCanonicalLink('/contact')],
   }),
   component: ContactPage,
 })

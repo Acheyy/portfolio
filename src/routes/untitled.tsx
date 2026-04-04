@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
+import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 import { LEVELS } from '~/data/untitled-levels'
 import type { Platform } from '~/data/untitled-levels'
 import type { DialogueState } from '~/data/untitled-dialogue'
@@ -18,14 +19,12 @@ import {
 
 export const Route = createFileRoute('/untitled')({
   head: () => ({
-    meta: [
-      { title: 'Untitled — Portfolio' },
-      {
-        name: 'description',
-        content:
-          'A platformer game. Navigate a square through obstacle courses.',
-      },
-    ],
+    meta: createSeoMeta({
+      title: 'Untitled — Porfo',
+      description: 'A platformer game. Navigate a square through obstacle courses.',
+      path: '/untitled',
+    }),
+    links: [createCanonicalLink('/untitled')],
   }),
   component: UntitledPage,
 })

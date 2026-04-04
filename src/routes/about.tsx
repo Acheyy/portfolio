@@ -2,17 +2,17 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
+import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/about')({
   head: () => ({
-    meta: [
-      { title: 'About Me — Portfolio' },
-      {
-        name: 'description',
-        content:
-          'Full-stack developer with 10+ years of experience. I build, deploy, and maintain production-ready web applications end to end.',
-      },
-    ],
+    meta: createSeoMeta({
+      title: 'About Me — Porfo',
+      description:
+        'Full-stack developer with 10+ years of experience. I build, deploy, and maintain production-ready web applications end to end.',
+      path: '/about',
+    }),
+    links: [createCanonicalLink('/about')],
   }),
   component: AboutPage,
 })
@@ -56,6 +56,16 @@ function AboutPage() {
             <h1 className="font-display text-4xl sm:text-5xl font-bold text-text-heading">
               Building for the web, end to end
             </h1>
+            <div className="mt-6 flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0">
+                <svg className="w-6 h-6 text-accent-light" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+              </div>
+              <p className="text-lg text-text-muted">
+                I'm <span className="text-text-heading font-semibold">Barbu Bogdan</span> — a full-stack developer who ships complete products.
+              </p>
+            </div>
           </motion.div>
 
           {/* Intro */}

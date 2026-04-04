@@ -83,7 +83,7 @@ export function Hero() {
           style={{ transformStyle: 'preserve-3d' }}
         >
           <p className="mb-4 sm:mb-6 text-sm font-medium uppercase tracking-[0.3em] text-accent-light">
-            Welcome to my portfolio
+            Welcome to Porfo
           </p>
         </motion.div>
 

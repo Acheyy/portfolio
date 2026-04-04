@@ -3,6 +3,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
+import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 import {
   dialogueTree,
   INITIAL_VARIABLES,
@@ -14,13 +15,12 @@ import {
 
 export const Route = createFileRoute('/mind-hacker')({
   head: () => ({
-    meta: [
-      { title: 'Mind Hacker — Portfolio' },
-      {
-        name: 'description',
-        content: 'A dialogue-driven narrative game. Enter minds. Uncover truths.',
-      },
-    ],
+    meta: createSeoMeta({
+      title: 'Mind Hacker — Porfo',
+      description: 'A dialogue-driven narrative game. Enter minds. Uncover truths.',
+      path: '/mind-hacker',
+    }),
+    links: [createCanonicalLink('/mind-hacker')],
   }),
   component: MindHackerPage,
 })

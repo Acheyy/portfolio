@@ -12,7 +12,7 @@ export function Footer() {
               className="flex items-center gap-2.5 font-display text-xl font-bold tracking-tight text-text-heading"
             >
               <img src="/logo.svg" alt="Logo" className="w-7 h-7" />
-              Portfolio<span className="text-accent">.</span>
+              <span>Porfo<span className="text-accent">.</span>io</span>
             </Link>
             <p className="mt-3 text-sm text-text-muted max-w-xs leading-relaxed">
               Full-stack developer building complete web applications — from code to deployment.
@@ -46,6 +46,11 @@ export function Footer() {
                     Skills
                   </Link>
                 </li>
+                <li>
+                  <Link to="/games" className="text-sm text-text-muted hover:text-accent-light transition-colors">
+                    Games
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -77,7 +82,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-text-muted">
-            &copy; {new Date().getFullYear()} Portfolio. All rights reserved.
+            &copy; {new Date().getFullYear()} Porfo. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <a

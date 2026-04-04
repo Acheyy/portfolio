@@ -3,16 +3,16 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
+import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/memory')({
   head: () => ({
-    meta: [
-      { title: 'Memory Cards — Portfolio' },
-      {
-        name: 'description',
-        content: 'Flip and match pairs. How few moves can you do it in?',
-      },
-    ],
+    meta: createSeoMeta({
+      title: 'Memory Cards — Porfo',
+      description: 'Flip and match pairs. How few moves can you do it in?',
+      path: '/memory',
+    }),
+    links: [createCanonicalLink('/memory')],
   }),
   component: MemoryPage,
 })

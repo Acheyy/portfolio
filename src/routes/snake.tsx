@@ -3,16 +3,16 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
+import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/snake')({
   head: () => ({
-    meta: [
-      { title: 'Snake — Portfolio' },
-      {
-        name: 'description',
-        content: 'A neon-themed Snake game. How high can you score?',
-      },
-    ],
+    meta: createSeoMeta({
+      title: 'Snake — Porfo',
+      description: 'A neon-themed Snake game. How high can you score?',
+      path: '/snake',
+    }),
+    links: [createCanonicalLink('/snake')],
   }),
   component: SnakePage,
 })

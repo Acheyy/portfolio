@@ -6,6 +6,7 @@ import {
   HeadContent,
   Scripts,
 } from '@tanstack/react-router'
+import { Toaster } from 'react-hot-toast'
 import appCss from '../styles/app.css?url'
 
 export const Route = createRootRoute({
@@ -13,18 +14,17 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Portfolio' },
-      { name: 'description', content: 'Personal portfolio — projects, skills, and more.' },
+      { title: 'Porfo' },
+      { name: 'description', content: 'Porfo — projects, skills, and more.' },
     ],
     links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
-      },
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.googleapis.com',
-      },
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+      { rel: 'manifest', href: '/site.webmanifest' },
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       {
         rel: 'preconnect',
         href: 'https://fonts.gstatic.com',
@@ -56,6 +56,19 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <body>
         <div className="noise-overlay" />
         {children}
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            style: {
+              background: '#1a1f2e',
+              color: '#e2e8f0',
+              border: '1px solid rgba(99, 179, 237, 0.2)',
+              borderRadius: '12px',
+              fontSize: '14px',
+              padding: '12px 16px',
+            },
+          }}
+        />
         <Scripts />
       </body>
     </html>

@@ -11,6 +11,22 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: 'porfo',
+    title: 'Porfo.io',
+    description:
+      'This very website you\'re looking at right now. Yes, I put myself in my own portfolio. It\'s portfolios all the way down.',
+    longDescription: `You\'re literally on it. Porfo.io is the portfolio that showcases itself — a recursive flex, if you will.
+
+Built with TanStack Start and TypeScript for blazing-fast server-side rendering, styled with Tailwind CSS for that dark, moody developer aesthetic, and sprinkled with Framer Motion animations because static pages are boring.
+
+Features include a projects showcase (you\'re in it), an about page, a contact form, and a mini-games section — because why not add Snake to your portfolio?
+
+Is it a bit meta to list your portfolio inside your portfolio? Absolutely. Do I regret it? Not even a little.`,
+    tags: ['TanStack Start', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    url: 'https://porfo.io',
+    images: [],
+  },
+  {
     slug: 'carshift',
     title: 'CarShift',
     description:
@@ -32,47 +48,22 @@ The platform is built entirely with TanStack Start and TypeScript — both the f
     ],
   },
   {
-    slug: 'ecommerce-platform',
-    title: 'E-Commerce Platform',
+    slug: 'lasercraft',
+    title: 'LaserCraft',
     description:
-      'A full-stack online store with real-time inventory, cart management, and Stripe integration for seamless checkout.',
-    longDescription:
-      'A full-stack online store with real-time inventory tracking, cart management, and Stripe integration for seamless checkout. Built to handle high traffic with optimized database queries and a responsive storefront.',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-    url: 'https://example.com/ecommerce',
-    images: [],
-  },
-  {
-    slug: 'task-management-app',
-    title: 'Task Management App',
-    description:
-      'Kanban-style project tracker with drag-and-drop, real-time collaboration, and custom workflow automations.',
-    longDescription:
-      'A Kanban-style project tracker featuring drag-and-drop task management, real-time collaboration via WebSockets, and custom workflow automations to streamline team productivity.',
-    tags: ['TypeScript', 'Next.js', 'Prisma', 'WebSocket'],
-    url: 'https://example.com/tasks',
-    images: [],
-  },
-  {
-    slug: 'analytics-dashboard',
-    title: 'Analytics Dashboard',
-    description:
-      'Interactive data visualization dashboard with live metrics, custom chart builder, and export capabilities.',
-    longDescription:
-      'An interactive data visualization dashboard with live metrics, a custom chart builder, and export capabilities. Powered by a Python FastAPI backend with D3.js rendering on the frontend.',
-    tags: ['React', 'D3.js', 'Python', 'FastAPI'],
-    url: 'https://example.com/analytics',
-    images: [],
-  },
-  {
-    slug: 'social-media-api',
-    title: 'Social Media API',
-    description:
-      'RESTful API powering a social platform with authentication, feeds, real-time notifications, and media uploads.',
-    longDescription:
-      'A RESTful API powering a social platform with JWT authentication, algorithmic feeds, real-time notifications via WebSockets, and media uploads with image processing. Built with Go for performance and Redis for caching.',
-    tags: ['Go', 'Redis', 'MongoDB', 'Docker'],
-    url: 'https://example.com/social-api',
-    images: [],
+      'Professional laser cutting and engraving service website. Showcases services, portfolio, and lets clients request custom quotes — all with a sleek, modern design.',
+    longDescription: `LaserCraft is the online presence for a professional laser cutting and engraving business based in Bucharest, Romania. The site is designed to showcase their full range of services — acrylic cutting, wood cutting, and precision laser engraving — while making it dead simple for potential clients to request a free custom quote.
+
+The homepage highlights key selling points at a glance: sub-0.1mm precision, 10+ years of experience, 2000+ completed projects, and a 99% client satisfaction rate. A dedicated services section breaks down each offering with clear descriptions, and a "Why Choose Us" section builds trust with details on fast delivery, material versatility, competitive pricing, free consultations, and quality guarantees.
+
+The site features a clean, dark-themed design with bold typography and orange accent colors, creating a premium and professional feel. Fully responsive and optimized for SEO to attract local and national clients searching for laser processing services.`,
+    tags: ['TanStack Start', 'TypeScript', 'Tailwind CSS'],
+    url: 'https://laser-craft.ro',
+    image: '/projects/lasercraft.png',
+    images: [
+      '/projects/lasercraft.png',
+      '/projects/lasercraft-portfolio.png',
+      '/projects/lasercraft-contact.png',
+    ],
   },
 ]

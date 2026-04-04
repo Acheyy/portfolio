@@ -32,6 +32,11 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               alt={project.title}
               className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
             />
+          ) : project.slug === 'porfo' ? (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-4">
+              <span className="text-2xl">👀</span>
+              <p className="text-xs font-medium text-text-muted/60">You're already looking at it</p>
+            </div>
           ) : (
             <div className="absolute inset-0 flex items-center justify-center text-text-muted/30">
               <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>

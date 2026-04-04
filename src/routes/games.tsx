@@ -2,16 +2,16 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
+import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/games')({
   head: () => ({
-    meta: [
-      { title: 'Mini Games — Portfolio' },
-      {
-        name: 'description',
-        content: 'A collection of fun mini games. Take a break and play.',
-      },
-    ],
+    meta: createSeoMeta({
+      title: 'Mini Games — Porfo',
+      description: 'A collection of fun mini games. Take a break and play.',
+      path: '/games',
+    }),
+    links: [createCanonicalLink('/games')],
   }),
   component: GamesPage,
 })
@@ -20,13 +20,34 @@ const ease = [0.22, 1, 0.36, 1] as const
 
 const games = [
   {
+    slug: 'untitled',
+    title: 'Untitled',
+    description: 'Navigate a square through obstacle courses. Arrow keys to move, Space to jump.',
+    color: '#f59e0b',
+    wip: true,
+    icon: (
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="3" width="18" height="18" rx="3" fill="#f59e0b" stroke="#fbbf24" strokeWidth="1.5" />
+        <circle cx="9.5" cy="10" r="2" fill="#0b0d11" />
+        <circle cx="14.5" cy="10" r="2" fill="#0b0d11" />
+      </svg>
+    ),
+    available: true,
+  },
+  {
     slug: 'snake',
     title: 'Neon Snake',
     description: 'The classic arcade game with a neon twist. Eat, grow, survive.',
     color: '#38bdf8',
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+        <rect x="14" y="4" width="6" height="6" rx="1.5" fill="#7dd3fc" />
+        <circle cx="16" cy="6.5" r="1" fill="#0b0d11" />
+        <circle cx="18.5" cy="6.5" r="1" fill="#0b0d11" />
+        <rect x="8" y="4" width="6" height="6" rx="1.5" fill="#38bdf8" />
+        <rect x="8" y="10" width="6" height="6" rx="1.5" fill="#38bdf8" />
+        <rect x="14" y="10" width="6" height="6" rx="1.5" fill="#38bdf8" />
+        <rect x="14" y="16" width="6" height="6" rx="1.5" fill="#38bdf8" opacity="0.6" />
       </svg>
     ),
     available: true,
@@ -56,25 +77,17 @@ const games = [
     available: true,
   },
   {
-    slug: 'untitled',
-    title: 'Untitled',
-    description: 'Navigate a square through obstacle courses. Arrow keys to move, Space to jump.',
-    color: '#f59e0b',
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-      </svg>
-    ),
-    available: true,
-  },
-  {
     slug: 'mind-hacker',
     title: 'Mind Hacker',
     description: 'Enter a mind. Uncover secrets. A branching narrative with multiple endings.',
     color: '#34d399',
+    wip: true,
     icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+      <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2a7 7 0 00-7 7c0 2.5 1.5 4.5 3 5.5V17a2 2 0 002 2h4a2 2 0 002-2v-2.5c1.5-1 3-3 3-5.5a7 7 0 00-7-7z" />
+        <path d="M9 21h6" />
+        <path d="M12 2v5" />
+        <path d="M8.5 8.5L12 7l3.5 1.5" />
       </svg>
     ),
     available: true,
@@ -185,6 +198,15 @@ function GameCard({ game }: { game: (typeof games)[number] }) {
         />
       )}
 
+      {game.wip && (
+        <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/25">
+          <svg className="w-3 h-3 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+          </svg>
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-amber-400">Unfinished</span>
+        </div>
+      )}
+
       <div
         className="w-14 h-14 rounded-xl flex items-center justify-center mb-5 border transition-colors duration-300"
         style={{
@@ -203,7 +225,14 @@ function GameCard({ game }: { game: (typeof games)[number] }) {
         {game.description}
       </p>
 
-      {game.available ? (
+      {game.wip ? (
+        <span className="inline-flex items-center gap-1.5 text-sm font-medium text-amber-400/70 group-hover:text-amber-400 group-hover:gap-2.5 transition-all">
+          Try anyway
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </span>
+      ) : game.available ? (
         <span className="inline-flex items-center gap-1.5 text-sm font-medium text-accent-light group-hover:gap-2.5 transition-all">
           Play now
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

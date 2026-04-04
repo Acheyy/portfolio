@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
+import toast from 'react-hot-toast'
 import { projects } from '~/data/projects'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
 import { Lightbox } from '~/components/Lightbox'
+import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/projects/$slug')({
   loader: ({ params }) => {
@@ -13,10 +15,13 @@ export const Route = createFileRoute('/projects/$slug')({
     return project
   },
   head: ({ loaderData }) => ({
-    meta: [
-      { title: `${loaderData.title} — Portfolio` },
-      { name: 'description', content: loaderData.description },
-    ],
+    meta: createSeoMeta({
+      title: `${loaderData.title} — Porfo`,
+      description: loaderData.description,
+      path: `/projects/${loaderData.slug}`,
+      image: loaderData.image,
+    }),
+    links: [createCanonicalLink(`/projects/${loaderData.slug}`)],
   }),
   component: ProjectDetail,
   notFoundComponent: () => (
@@ -95,6 +100,26 @@ function ProjectDetail() {
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={
+                project.slug === 'porfo'
+                  ? (e) => {
+                      e.preventDefault()
+                      const messages = [
+                        "🤦 You're already here, genius.",
+                        "🔄 Congratulations, you just navigated to... here.",
+                        "🪞 It's like looking in a mirror, but for websites.",
+                        "📍 You are here. You were always here.",
+                        "🧠 Big brain move. Really.",
+                        "♾️ Recursion detected. Stack overflow imminent.",
+                        "🫠 The site is coming from inside the site.",
+                      ]
+                      toast(messages[Math.floor(Math.random() * messages.length)], {
+                        icon: null,
+                        duration: 3000,
+                      })
+                    }
+                  : undefined
+              }
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-accent/25 transition-all hover:bg-accent-light hover:shadow-accent/40 hover:-translate-y-0.5"
             >
               Visit Live Site
