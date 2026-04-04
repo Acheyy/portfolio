@@ -1,7 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
-import { Navbar } from '~/components/Navbar'
-import { Footer } from '~/components/Footer'
 import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/about')({
@@ -22,7 +20,6 @@ const ease = [0.22, 1, 0.36, 1] as const
 function AboutPage() {
   return (
     <>
-      <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="mx-auto max-w-4xl">
           {/* Back */}
@@ -237,7 +234,6 @@ function AboutPage() {
           </motion.div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

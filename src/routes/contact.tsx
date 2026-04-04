@@ -1,7 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
-import { Navbar } from '~/components/Navbar'
-import { Footer } from '~/components/Footer'
 import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/contact')({
@@ -21,7 +19,6 @@ const ease = [0.22, 1, 0.36, 1] as const
 function ContactPage() {
   return (
     <>
-      <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="mx-auto max-w-4xl">
           <motion.div
@@ -78,7 +75,6 @@ function ContactPage() {
           </motion.div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

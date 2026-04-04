@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Navbar } from '~/components/Navbar'
-import { Footer } from '~/components/Footer'
 import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/reaction')({
@@ -25,7 +23,6 @@ type Phase = 'ready' | 'waiting' | 'go' | 'too-early' | 'result' | 'done'
 function ReactionPage() {
   return (
     <>
-      <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="mx-auto max-w-2xl">
           <motion.div
@@ -67,7 +64,6 @@ function ReactionPage() {
           </motion.div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

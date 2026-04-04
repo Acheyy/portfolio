@@ -1,7 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
-import { Navbar } from '~/components/Navbar'
-import { Footer } from '~/components/Footer'
 import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/games')({
@@ -97,7 +95,6 @@ const games = [
 function GamesPage() {
   return (
     <>
-      <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="mx-auto max-w-4xl">
           <motion.div
@@ -175,7 +172,6 @@ function GamesPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Navbar } from '~/components/Navbar'
-import { Footer } from '~/components/Footer'
 import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
 export const Route = createFileRoute('/snake')({
@@ -61,7 +59,6 @@ function spawnFood(snake: Point[]): Point {
 function SnakePage() {
   return (
     <>
-      <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="mx-auto max-w-3xl">
           <motion.div
@@ -103,7 +100,6 @@ function SnakePage() {
           </motion.div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { Navbar } from '~/components/Navbar'
 import { Hero } from '~/components/Hero'
 import { Projects } from '~/components/Projects'
 import { About } from '~/components/About'
@@ -55,7 +54,6 @@ export const Route = createFileRoute('/')({
 function HomePage() {
   return (
     <>
-      <Navbar />
       <SectionNav />
       <div className="snap-scroll-container">
         <Hero />

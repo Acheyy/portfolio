@@ -7,6 +7,8 @@ import {
   Scripts,
 } from '@tanstack/react-router'
 import { Toaster } from 'react-hot-toast'
+import { Navbar } from '~/components/Navbar'
+import { Footer } from '~/components/Footer'
 import appCss from '../styles/app.css?url'
 
 export const Route = createRootRoute({
@@ -53,9 +55,13 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="min-h-screen flex flex-col">
         <div className="noise-overlay" />
-        {children}
+        <Navbar />
+        <div className="flex-1">
+          {children}
+        </div>
+        <Footer />
         <Toaster
           position="top-center"
           toastOptions={{

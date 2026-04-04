@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Navbar } from '~/components/Navbar'
-import { Footer } from '~/components/Footer'
 import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 import { LEVELS } from '~/data/untitled-levels'
 import type { Platform } from '~/data/untitled-levels'
@@ -67,7 +65,6 @@ type Particle = {
 function UntitledPage() {
   return (
     <>
-      <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="mx-auto max-w-5xl">
           <motion.div
@@ -119,7 +116,6 @@ function UntitledPage() {
           </motion.div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

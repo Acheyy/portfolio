@@ -3,8 +3,6 @@ import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 import { projects, porfoMessages } from '~/data/projects'
-import { Navbar } from '~/components/Navbar'
-import { Footer } from '~/components/Footer'
 import { Lightbox } from '~/components/Lightbox'
 import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 
@@ -53,7 +51,6 @@ function ProjectDetail() {
 
   return (
     <>
-      <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="mx-auto max-w-4xl">
           {/* Back link */}
@@ -198,7 +195,6 @@ function ProjectDetail() {
           )}
         </div>
       </main>
-      <Footer />
 
       <Lightbox
         images={project.images}

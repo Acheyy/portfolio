@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Navbar } from '~/components/Navbar'
-import { Footer } from '~/components/Footer'
 import { createSeoMeta, createCanonicalLink } from '~/lib/seo'
 import {
   dialogueTree,
@@ -51,7 +49,6 @@ function checkCondition(condition: Condition, vars: Variables): boolean {
 function MindHackerPage() {
   return (
     <>
-      <Navbar />
       <main className="pt-28 pb-20 px-6">
         <div className="mx-auto max-w-2xl">
           <motion.div
@@ -93,7 +90,6 @@ function MindHackerPage() {
           </motion.div>
         </div>
       </main>
-      <Footer />
     </>
   )
 }

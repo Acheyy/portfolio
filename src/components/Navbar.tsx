@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react'
-import { Link } from '@tanstack/react-router'
+import { Link, useLocation } from '@tanstack/react-router'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
-    const snapContainer = document.querySelector('.snap-scroll-container')
-    const target = snapContainer || window
+    setMobileOpen(false)
+    setScrolled(false)
+
+    let snapContainer: Element | null = null
+    let target: Element | Window = window
+
+    const attach = () => {
+      snapContainer = document.querySelector('.snap-scroll-container')
+      target = snapContainer || window
+      target.addEventListener('scroll', onScroll, { passive: true })
+    }
 
     const onScroll = () => {
       const scrollTop = snapContainer
@@ -17,9 +27,13 @@ export function Navbar() {
       setScrolled(scrollTop > 40)
     }
 
-    target.addEventListener('scroll', onScroll, { passive: true })
-    return () => target.removeEventListener('scroll', onScroll)
-  }, [])
+    // Defer to allow route content to render before querying the DOM
+    const raf = requestAnimationFrame(attach)
+    return () => {
+      cancelAnimationFrame(raf)
+      target.removeEventListener('scroll', onScroll)
+    }
+  }, [location.pathname])
 
   return (
     <motion.nav
