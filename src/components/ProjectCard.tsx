@@ -6,20 +6,24 @@ import { porfoMessages, type Project } from '~/data/projects'
 interface ProjectCardProps {
   project: Project
   index: number
+  isMobile?: boolean
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project, index, isMobile }: ProjectCardProps) {
   return (
     <motion.div
       className="snap-card shrink-0 w-[calc(100vw-3rem)] sm:w-[400px]"
-      initial={{ opacity: 0, x: 60 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: false, margin: '-40px' }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+      initial={isMobile ? false : { opacity: 0, x: 60 }}
+      animate={isMobile ? { opacity: 1, x: 0 } : undefined}
+      {...(!isMobile && {
+        whileInView: { opacity: 1, x: 0 },
+        viewport: { once: false, margin: '-40px' as string },
+        transition: {
+          duration: 0.6,
+          delay: index * 0.1,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      })}
     >
       <Link
         to="/projects/$slug"

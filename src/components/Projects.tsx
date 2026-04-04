@@ -1,13 +1,26 @@
-import { useRef, useState, useCallback } from 'react'
+import { useRef, useState, useCallback, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { projects } from '~/data/projects'
 import { ProjectCard } from './ProjectCard'
 
 const totalCards = projects.length + 1
 
+function useIsMobile(breakpoint = 640) {
+  const [mobile, setMobile] = useState(false)
+  useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`)
+    setMobile(mql.matches)
+    const handler = (e: MediaQueryListEvent) => setMobile(e.matches)
+    mql.addEventListener('change', handler)
+    return () => mql.removeEventListener('change', handler)
+  }, [breakpoint])
+  return mobile
+}
+
 export function Projects() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const isMobile = useIsMobile()
 
   const handleScroll = useCallback(() => {
     const el = scrollRef.current
@@ -57,18 +70,21 @@ export function Projects() {
         >
           <div className="flex gap-6 py-4">
             {projects.map((project, i) => (
-              <ProjectCard key={project.title} project={project} index={i} />
+              <ProjectCard key={project.title} project={project} index={i} isMobile={isMobile} />
             ))}
             <motion.div
               className="snap-card shrink-0 w-[calc(100vw-3rem)] sm:w-[400px]"
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: '-40px' }}
-              transition={{
-                duration: 0.6,
-                delay: projects.length * 0.1,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+              initial={isMobile ? false : { opacity: 0, x: 60 }}
+              animate={isMobile ? { opacity: 1, x: 0 } : undefined}
+              {...(!isMobile && {
+                whileInView: { opacity: 1, x: 0 },
+                viewport: { once: false, margin: '-40px' as string },
+                transition: {
+                  duration: 0.6,
+                  delay: projects.length * 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                },
+              })}
             >
               <div className="glow-card flex flex-col items-center justify-center p-4 sm:p-6 h-full min-h-0 sm:min-h-[420px] select-none">
                 <span className="text-4xl mb-4">🚧</span>
