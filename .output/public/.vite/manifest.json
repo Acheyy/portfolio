@@ -1,0 +1,27 @@
+{
+  "../../../../~start/default-client-entry.tsx": {
+    "file": "assets/main-CVaL5-oa.js",
+    "name": "main",
+    "src": "../../../../~start/default-client-entry.tsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/routes/index.tsx?tsr-split=component"
+    ],
+    "assets": [
+      "assets/app-SxzcOtPa.css"
+    ]
+  },
+  "/root/projects/personal/portfolio/src/styles/app.css": {
+    "file": "assets/app-SxzcOtPa.css",
+    "src": "/root/projects/personal/portfolio/src/styles/app.css"
+  },
+  "src/routes/index.tsx?tsr-split=component": {
+    "file": "assets/index-Bb7Tu69U.js",
+    "name": "index",
+    "src": "src/routes/index.tsx?tsr-split=component",
+    "isDynamicEntry": true,
+    "imports": [
+      "../../../../~start/default-client-entry.tsx"
+    ]
+  }
+}

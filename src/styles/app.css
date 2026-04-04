@@ -1,0 +1,170 @@
+@import 'tailwindcss' source('../');
+
+@theme {
+  --color-bg: #0b0d11;
+  --color-bg-card: #111318;
+  --color-bg-card-hover: #181b22;
+  --color-border: #1f2330;
+  --color-border-glow: #38bdf8;
+  --color-text: #d4d4dc;
+  --color-text-muted: #6b7280;
+  --color-text-heading: #f1f5f9;
+  --color-accent: #38bdf8;
+  --color-accent-light: #7dd3fc;
+  --color-accent-dark: #0284c7;
+  --color-indigo: #818cf8;
+  --font-display: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+.snap-scroll-container {
+  height: 100dvh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.snap-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent) 40%, var(--color-indigo) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-card {
+  position: relative;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 40%, var(--color-accent) 50%, transparent 60%);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.glow-card:hover::before {
+  opacity: 1;
+}
+
+.glow-card:hover {
+  background: var(--color-bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px -15px rgba(56, 189, 248, 0.12);
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.25; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.section-divider {
+  height: 1px;
+  max-width: 72rem;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, var(--color-border) 20%, var(--color-accent) 50%, var(--color-border) 80%, transparent);
+  opacity: 0.5;
+}
+
+.snap-section {
+  height: 100dvh;
+  scroll-snap-align: start;
+}
+
+.horizontal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+  background: var(--color-border);
+  border-radius: 2px;
+  opacity: 0.3;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-accent-dark);
+  border-radius: 2px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+.game-canvas-glow {
+  box-shadow: 0 0 30px -10px rgba(56, 189, 248, 0.15),
+              inset 0 0 30px -10px rgba(56, 189, 248, 0.05);
+  transition: box-shadow 0.4s ease;
+}
+
+.game-canvas-glow:hover {
+  box-shadow: 0 0 40px -10px rgba(56, 189, 248, 0.25),
+              inset 0 0 40px -10px rgba(56, 189, 248, 0.08);
+}
