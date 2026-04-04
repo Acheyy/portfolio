@@ -11,28 +11,13 @@ export function Navbar() {
     setMobileOpen(false)
     setScrolled(false)
 
-    let snapContainer: Element | null = null
-    let target: Element | Window = window
-
-    const attach = () => {
-      snapContainer = document.querySelector('.snap-scroll-container')
-      target = snapContainer || window
-      target.addEventListener('scroll', onScroll, { passive: true })
-    }
-
     const onScroll = () => {
-      const scrollTop = snapContainer
-        ? (snapContainer as HTMLElement).scrollTop
-        : window.scrollY
-      setScrolled(scrollTop > 40)
+      const snap = document.querySelector('.snap-scroll-container') as HTMLElement | null
+      setScrolled((snap ? snap.scrollTop : window.scrollY) > 40)
     }
 
-    // Defer to allow route content to render before querying the DOM
-    const raf = requestAnimationFrame(attach)
-    return () => {
-      cancelAnimationFrame(raf)
-      target.removeEventListener('scroll', onScroll)
-    }
+    document.addEventListener('scroll', onScroll, { passive: true, capture: true })
+    return () => document.removeEventListener('scroll', onScroll, { capture: true })
   }, [location.pathname])
 
   return (
