@@ -8,13 +8,15 @@ function createRouter() {
   })
 }
 
-let router: ReturnType<typeof createRouter> | undefined
+/** Client-only singleton; SSR must use a fresh router per request (see TanStack Router `beforeLoad` + shared mutable state). */
+let clientRouter: ReturnType<typeof createRouter> | undefined
 
 export function getRouter() {
-  if (!router) {
-    router = createRouter()
+  if (import.meta.env.SSR) {
+    return createRouter()
   }
-  return router
+  clientRouter ??= createRouter()
+  return clientRouter
 }
 
 declare module '@tanstack/react-router' {
