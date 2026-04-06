@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "start": "node start.mjs"
+    "start": "node start.mjs",
+    "start:public": "HOST=0.0.0.0 NITRO_HOST=0.0.0.0 node start.mjs"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.167.16",
@@ -19,6 +20,7 @@
     "vite": "^8"
   },
   "devDependencies": {
+    "@tanstack/devtools-vite": "^0.3.11",
     "@tailwindcss/vite": "^4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
