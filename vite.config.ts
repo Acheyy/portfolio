@@ -11,12 +11,14 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
+  /** Preset belongs on `nitro` config (typed); the plugin only accepts `config` / `services`. */
+  nitro: {
+    preset: 'node-server',
+  },
   plugins: [
     tailwindcss(),
-    tanstackStart({
-      customViteReactPlugin: true,
-    }),
-    nitro({ preset: 'node' }),
+    tanstackStart(),
+    nitro(),
     viteReact(),
   ],
 })

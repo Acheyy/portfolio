@@ -12,15 +12,20 @@ export const Route = createFileRoute('/projects/$slug')({
     if (!project) throw notFound()
     return project
   },
-  head: ({ loaderData }) => ({
-    meta: createSeoMeta({
-      title: `${loaderData.title} — Porfo`,
-      description: loaderData.description,
-      path: `/projects/${loaderData.slug}`,
-      image: loaderData.image,
-    }),
-    links: [createCanonicalLink(`/projects/${loaderData.slug}`)],
-  }),
+  head: ({ loaderData }) => {
+    if (!loaderData) {
+      return { meta: [], links: [] as { rel: string; href: string }[] }
+    }
+    return {
+      meta: createSeoMeta({
+        title: `${loaderData.title} — Porfo`,
+        description: loaderData.description,
+        path: `/projects/${loaderData.slug}`,
+        image: loaderData.image,
+      }),
+      links: [createCanonicalLink(`/projects/${loaderData.slug}`)],
+    }
+  },
   component: ProjectDetail,
   notFoundComponent: () => (
     <div className="min-h-screen flex items-center justify-center">

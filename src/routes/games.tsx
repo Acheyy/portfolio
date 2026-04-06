@@ -18,7 +18,7 @@ const ease = [0.22, 1, 0.36, 1] as const
 
 const games = [
   {
-    slug: 'untitled',
+    slug: 'untitled' as const,
     title: 'Untitled',
     description: 'Navigate a square through obstacle courses. Arrow keys to move, Space to jump.',
     color: '#f59e0b',
@@ -33,7 +33,7 @@ const games = [
     available: true,
   },
   {
-    slug: 'snake',
+    slug: 'snake' as const,
     title: 'Neon Snake',
     description: 'The classic arcade game with a neon twist. Eat, grow, survive.',
     color: '#38bdf8',
@@ -51,7 +51,7 @@ const games = [
     available: true,
   },
   {
-    slug: 'memory',
+    slug: 'memory' as const,
     title: 'Memory Cards',
     description: 'Flip and match pairs before time runs out. Train your memory.',
     color: '#818cf8',
@@ -63,7 +63,7 @@ const games = [
     available: true,
   },
   {
-    slug: 'reaction',
+    slug: 'reaction' as const,
     title: 'Reaction Time',
     description: 'How fast are your reflexes? Click the moment the screen changes.',
     color: '#f472b6',
@@ -75,7 +75,7 @@ const games = [
     available: true,
   },
   {
-    slug: 'mind-hacker',
+    slug: 'mind-hacker' as const,
     title: 'Mind Hacker',
     description: 'Enter a mind. Uncover secrets. A branching narrative with multiple endings.',
     color: '#34d399',

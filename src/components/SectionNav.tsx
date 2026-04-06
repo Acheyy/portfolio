@@ -13,7 +13,7 @@ const HIDE_DELAY = 2500
 export function SectionNav() {
   const [active, setActive] = useState('home')
   const [visible, setVisible] = useState(true)
-  const timerRef = useRef<ReturnType<typeof setTimeout>>()
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
 
   const scheduleHide = useCallback(() => {
     clearTimeout(timerRef.current)
